@@ -73,7 +73,7 @@ CREATE TABLE `member` (
 
 --
 -- 테이블의 덤프 데이터 `member`
---
+-- dragonfly95 / 1234
 
 INSERT INTO `member` (`user_no`, `email`, `id`, `nick_name`, `password`, `phone`, `position_x`, `position_y`, `refresh_token`) VALUES
 (1, 'dbdyd@nuonchic.com', 'dragonfly95', '나그네33+', '$2a$10$FhiuXB8FQuftta/OUj7C7uOK8SKYOdjKcYWZY/P4fDG7wS4H7PjZu', '010-2214-1797', '', '', 'eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6IjEiLCJleHAiOjE2NDcxNjUxMzl9.kFxLRCU599ELag_p8rp7HRFe47AYpYxi5y2QII9AT207GksgUKdpb0P2gPmkfiT7FdWn2uKZixkbVLaUguOvIg');
