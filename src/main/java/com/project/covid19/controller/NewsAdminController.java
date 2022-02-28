@@ -31,7 +31,7 @@ public class NewsAdminController {
 
         model.addAttribute("list", list);
         model.addAttribute("totalCount", total);
-        return "daum/list";
+        return "news/list";
     }
 
 
@@ -40,7 +40,7 @@ public class NewsAdminController {
         List<HashMap> category = service.getCategory();
 
         model.addAttribute("category", category);
-        return "daum/form";
+        return "news/form";
     }
 
 
@@ -51,7 +51,7 @@ public class NewsAdminController {
 
         model.addAttribute("vo", vo);
         model.addAttribute("category", category);
-        return "daum/form";
+        return "news/form";
     }
 
     @RequestMapping(value = "/popup/news/view/{id}", method = RequestMethod.GET)
@@ -59,19 +59,19 @@ public class NewsAdminController {
         NewsVO vo = service.detailNews(id);
 
         model.addAttribute("vo", vo);
-        return "daum/view";
+        return "news/view";
     }
 
     //----
     @RequestMapping(value = "/news/create", method = RequestMethod.POST)
     public ResponseVO createNews(@RequestBody NewsVO newsVO) {
-        int cnt = service.createNews(newsVO);
+        service.createNews(newsVO);
         return new ResponseVO("OK", 200);
     }
 
     @RequestMapping(value = "/news/update", method = RequestMethod.PUT)
     public ResponseVO updateNews(@RequestBody NewsVO newsVO) {
-        int cnt = service.updateNews(newsVO);
+        service.updateNews(newsVO);
         return new ResponseVO("OK", 200);
     }
 

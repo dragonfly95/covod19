@@ -10,6 +10,7 @@ import SignUp from '@/views/member/SignUp.vue'
 import Board from '@/views/boards/Board.vue'
 import BoardWrite from '@/views/boards/BoardWrite.vue'
 import BoardRead from '@/views/boards/BoardRead.vue'
+import List from '@/views/news/List.vue'
 
 Vue.use(VueRouter)
 
@@ -68,6 +69,11 @@ const routes = [
     props: {
       default: true
     }
+  },
+  {
+    path: '/news',
+    name: 'NewsList',
+    component: List
   }
 ]
 

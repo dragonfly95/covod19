@@ -25,7 +25,7 @@ public class DaumNewsScheduler {
     private NewsRepository mapper;
 
     // 10분마다 실행
-    @Scheduled(cron = "0 */60 * * * *")
+    @Scheduled(cron = "0 */10 * * * *")
     public void scrawal() throws Exception {
         String url = "https://news.daum.net/";
         Connection conn = Jsoup.connect(url);

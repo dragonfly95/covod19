@@ -29,21 +29,22 @@ public class NewsService {
     @Autowired
     private NewsCategoryRepository newsCategoryRepository;
 
-    public int updateNews(NewsVO newsVO) {
-
-        return 0;
+    public News updateNews(NewsVO newsVO) {
+        News news = modelMapper.map(newsVO, News.class);
+        return newsRepository.save(news);
     }
 
-    public int createNews(NewsVO newsVO) {
-        return 0;
+    public News createNews(NewsVO newsVO) {
+        News news = modelMapper.map(newsVO, News.class);
+        return newsRepository.save(news);
     }
 
     public NewsVO detailNews(String id) {
-        return null;
+        return newsRepository.findById(id).map(NewsVO::new).orElse(new NewsVO());
     }
 
     public List<HashMap> getCategory() {
-        return new ArrayList<>();
+        return newsCategoryRepository.findAllBy(HashMap.class);
     }
 
     public int countAllNews() {
