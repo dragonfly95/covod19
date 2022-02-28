@@ -4,16 +4,18 @@ import com.project.covid19.vo.NewsVO;
 import com.project.covid19.service.NewsService;
 import com.project.covid19.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.awt.print.Pageable;
 import java.util.HashMap;
 import java.util.List;
 
+@Controller
 public class NewsAdminController {
 
 
