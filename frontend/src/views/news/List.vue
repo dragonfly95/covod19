@@ -91,10 +91,10 @@ export default {
     ]),
     rowClick: function (item, row) {
       // console.log('boardNo : ' + item.boardNo)
-      router.push({ name: 'BoardRead', params: { boardNo: item.boardNo.toString() } })
+      router.push({ name: 'NewsRead', params: { id: item.id.toString() } })
     },
     moveWriteBoard: function () {
-      router.push({ name: 'BoardWrite' })
+      router.push({ name: 'NewsWrite' })
     }
   },
   mounted () {

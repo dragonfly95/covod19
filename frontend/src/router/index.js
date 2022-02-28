@@ -11,6 +11,8 @@ import Board from '@/views/boards/Board.vue'
 import BoardWrite from '@/views/boards/BoardWrite.vue'
 import BoardRead from '@/views/boards/BoardRead.vue'
 import List from '@/views/news/List.vue'
+import Form from '@/views/news/Form.vue'
+import View from '@/views/news/View.vue'
 
 Vue.use(VueRouter)
 
@@ -76,10 +78,15 @@ const routes = [
     component: List
   },
   {
+    path: '/news/write',
+    name: 'NewsWrite',
+    component: Form
+  },
+  {
     path: '/news/view/:id',
     name: 'NewsRead',
     components: {
-      default: NewsRead
+      default: View
     },
     props: {
       default: true
