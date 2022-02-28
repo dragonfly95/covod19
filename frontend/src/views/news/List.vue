@@ -42,7 +42,8 @@
               </v-tooltip>
               <v-tooltip top>
                 <template v-slot:activator="{ on }">
-                  <v-btn width="30px" height="30px" icon outlined color="primary" class="mr-3" v-on="on" @click="moveWriteBoard">
+                  <v-btn width="30px" height="30px" icon outlined color="primary" class="mr-3" v-on="on"
+                  @click="moveWriteBoard">
                     <v-icon :small="true">mdi-plus</v-icon>
                   </v-btn>
                 </template>
@@ -87,7 +88,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getNewsListAction'
+      'getBoardListAction'
     ]),
     rowClick: function (item, row) {
       // console.log('boardNo : ' + item.boardNo)
