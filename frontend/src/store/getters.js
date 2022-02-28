@@ -34,5 +34,12 @@ export default {
       return false
     }
     return state.board.writer === state.loginInfo.nickName
+  },
+
+  getNewsList (state) {
+    if (state.newsList != null) {
+      return state.newsList.content
+    }
+    return ''
   }
 }

@@ -11,11 +11,30 @@
                 <v-text-field v-model="search" append-icon="mdi-magnify" label="Title Search" single-line hide-details />
            </v-card-title>
            <v-card-text>
-            <v-data-table @click:row="rowClick" :headers="headers" :items="getBoardList" :search="search" :footer-props="footerProps" :sort-by="['boardNo']" :sort-desc="[true]" :fixed-header="true" height="530px"/>
+            <v-data-table @click:row="rowClick"
+                        :headers="headers"
+                        :items="getNewsList"
+                        :search="search"
+                        :footer-props="footerProps"
+                        :sort-by="['id']"
+                        :sort-desc="[true]"
+                        :fixed-header="true" height="530px">
+
+                <template v-slot:item.thumbnail="{ item }">
+                  <v-img
+                    :src="item.thumbnail"
+                    height="30"
+                    width="40"
+                    contain
+                    class="white darken-1">
+                  </v-img>
+                </template>
+
+            </v-data-table>
             <div class="table-footer-prepend d-flex pl-2 align-center">
               <v-tooltip top>
                 <template v-slot:activator="{ on }">
-                  <v-btn width="30px" height="30px" icon outlined color="primary" class="mr-3" v-on="on" @click="getBoardListAction">
+                  <v-btn width="30px" height="30px" icon outlined color="primary" class="mr-3" v-on="on" @click="getNewsListAction">
                     <v-icon :small="true">mdi-refresh</v-icon>
                   </v-btn>
                 </template>
@@ -47,10 +66,10 @@ export default {
   data: function () {
     return {
       headers: [
-        { text: 'No.', align: 'center', sortable: false, filterable: false, value: 'boardNo', width: '10%' },
-        { text: 'Title', align: 'center', sortable: false, filterable: true, value: 'title', width: '50%' },
-        { text: 'Writer', align: 'center', sortable: false, filterable: false, value: 'writer', width: '20%' },
-        { text: 'date', align: 'center', sortable: false, filterable: false, value: 'regDate', width: '20%' }
+        { text: 'Image', align: 'center', sortable: false, filterable: false, value: 'thumbnail', width: '10%' },
+        { text: 'title_name', align: 'center', sortable: false, filterable: true, value: 'title_name', width: '50%' },
+        { text: 'Reporter', align: 'center', sortable: false, filterable: false, value: 'reporter', width: '20%' },
+        { text: 'reg_date', align: 'center', sortable: false, filterable: false, value: 'reg_date', width: '20%' }
       ],
       footerProps: {
         itemsPerPageText: '',
@@ -63,12 +82,12 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getBoardList'
+      'getNewsList'
     ])
   },
   methods: {
     ...mapActions([
-      'getBoardListAction'
+      'getNewsListAction'
     ]),
     rowClick: function (item, row) {
       // console.log('boardNo : ' + item.boardNo)
@@ -79,7 +98,7 @@ export default {
     }
   },
   mounted () {
-    this.getBoardListAction()
+    this.getNewsListAction()
   }
 }
 </script>

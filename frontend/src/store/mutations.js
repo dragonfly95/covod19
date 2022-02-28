@@ -10,7 +10,8 @@ import {
   SET_CENTER_MARKER,
   SET_MARKERS,
   SET_CIRCLE,
-  SET_LOGIN_LOACTION_XY
+  SET_LOGIN_LOACTION_XY,
+  SET_NEWS_LIST
 } from '@/store/mutation-types.js'
 
 import axios from 'axios'
@@ -66,5 +67,8 @@ export default {
       state.loginInfo.positionX = data.x
       state.loginInfo.positionY = data.y
     }
+  },
+  [SET_NEWS_LIST] (state, data) {
+    state.newsList = data
   }
 }
