@@ -74,6 +74,16 @@ const routes = [
     path: '/news',
     name: 'NewsList',
     component: List
+  },
+  {
+    path: '/news/view/:id',
+    name: 'NewsRead',
+    components: {
+      default: NewsRead
+    },
+    props: {
+      default: true
+    }
   }
 ]
 

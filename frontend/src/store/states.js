@@ -28,6 +28,7 @@ export default {
   isLogin: false,
   loginInfo: null,
   boardList: [],
+  newsList: [],
   board: null,
   map: null,
   markers: [],

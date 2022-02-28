@@ -23,8 +23,8 @@
                 <template v-slot:item.thumbnail="{ item }">
                   <v-img
                     :src="item.thumbnail"
-                    height="30"
-                    width="40"
+                    height="60"
+                    width="70"
                     contain
                     class="white darken-1">
                   </v-img>
@@ -42,8 +42,7 @@
               </v-tooltip>
               <v-tooltip top>
                 <template v-slot:activator="{ on }">
-                  <v-btn width="30px" height="30px" icon outlined color="primary" class="mr-3" v-on="on"
-                  @click="moveWriteBoard">
+                  <v-btn width="30px" height="30px" icon outlined color="primary" class="mr-3" v-on="on" @click="moveWriteBoard">
                     <v-icon :small="true">mdi-plus</v-icon>
                   </v-btn>
                 </template>
@@ -67,7 +66,7 @@ export default {
   data: function () {
     return {
       headers: [
-        { text: 'Image', align: 'center', sortable: false, filterable: false, value: 'thumbnail', width: '10%' },
+        { text: 'thumbnail', align: 'center', sortable: false, filterable: false, value: 'thumbnail', width: '10%' },
         { text: 'title_name', align: 'center', sortable: false, filterable: true, value: 'title_name', width: '50%' },
         { text: 'Reporter', align: 'center', sortable: false, filterable: false, value: 'reporter', width: '20%' },
         { text: 'reg_date', align: 'center', sortable: false, filterable: false, value: 'reg_date', width: '20%' }
@@ -88,7 +87,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getBoardListAction'
+      'getNewsListAction'
     ]),
     rowClick: function (item, row) {
       // console.log('boardNo : ' + item.boardNo)

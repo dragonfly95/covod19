@@ -40,6 +40,6 @@ export default {
     if (state.newsList != null) {
       return state.newsList.content
     }
-    return ''
+    return []
   }
 }
