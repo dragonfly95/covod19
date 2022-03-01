@@ -154,6 +154,7 @@ export default {
   mounted () {
     this.getNewsAction(this.id)
     // this.initValue(this.$store.state.news)
+    // 변수값 할당
     this.news = this.$store.state.news
   },
   updated () {

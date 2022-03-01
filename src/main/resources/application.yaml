@@ -22,7 +22,7 @@ spring:
       order_updates: true
 
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
   jackson:
     serialization:

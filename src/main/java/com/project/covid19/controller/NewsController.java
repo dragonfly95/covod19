@@ -19,6 +19,7 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
+    // 조회할 때
     @RequestMapping(value = "/news")
     public Page<NewsVO> getNews(Pageable pageable) {
         Page<NewsVO> list = newsService.getNews(pageable);
@@ -26,6 +27,7 @@ public class NewsController {
     }
 
 
+    // 조회할때
     @RequestMapping(value = "/news/{id}", method = RequestMethod.GET)
     public NewsVO getNewsDetail(@PathVariable("id") String id, Model model) {
         NewsVO vo = newsService.detailNews(id);
@@ -33,18 +35,21 @@ public class NewsController {
     }
 
     //----
+    // 등록할 때
     @RequestMapping(value = "/news", method = RequestMethod.POST)
     public ResponseVO createNews(@RequestBody NewsVO newsVO) {
         newsService.createNews(newsVO);
         return new ResponseVO("OK", 200);
     }
 
+    // 수정할 때
     @RequestMapping(value = "/news/{id}", method = RequestMethod.PUT)
     public ResponseVO updateNews(@RequestBody NewsVO newsVO) {
         newsService.updateNews(newsVO);
         return new ResponseVO("OK", 200);
     }
 
+    // 삭제할 때
     @RequestMapping(value = "/news/{id}", method = RequestMethod.DELETE)
     public ResponseVO deleteNews(@PathVariable String id) {
         newsService.deleteNews(id);
