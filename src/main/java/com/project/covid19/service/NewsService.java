@@ -62,4 +62,8 @@ public class NewsService {
         Page page = new PageImpl<NewsVO>(contents, pageable, data.getTotalElements());
         return page;
     }
+
+    public void deleteNews(String id) {
+        newsRepository.deleteById(id);
+    }
 }

@@ -62,17 +62,6 @@ public class NewsAdminController {
         return "news/view";
     }
 
-    //----
-    @RequestMapping(value = "/news/create", method = RequestMethod.POST)
-    public ResponseVO createNews(@RequestBody NewsVO newsVO) {
-        service.createNews(newsVO);
-        return new ResponseVO("OK", 200);
-    }
 
-    @RequestMapping(value = "/news/update", method = RequestMethod.PUT)
-    public ResponseVO updateNews(@RequestBody NewsVO newsVO) {
-        service.updateNews(newsVO);
-        return new ResponseVO("OK", 200);
-    }
 
 }

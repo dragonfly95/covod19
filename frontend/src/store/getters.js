@@ -41,5 +41,12 @@ export default {
       return state.newsList.content
     }
     return []
+  },
+
+  getNews (state) {
+    if (state.news != null) {
+      return state.news
+    }
+    return {}
   }
 }

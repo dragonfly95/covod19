@@ -11,7 +11,8 @@ import {
   SET_MARKERS,
   SET_CIRCLE,
   SET_LOGIN_LOACTION_XY,
-  SET_NEWS_LIST
+  SET_NEWS_LIST,
+  SET_NEWS
 } from '@/store/mutation-types.js'
 
 import axios from 'axios'
@@ -70,5 +71,9 @@ export default {
   },
   [SET_NEWS_LIST] (state, data) {
     state.newsList = data
+  },
+
+  [SET_NEWS] (state, data) {
+    state.news = data
   }
 }
