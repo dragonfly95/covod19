@@ -68,7 +68,7 @@ export default {
   },
 
   getNewsListAction: function ({ commit }) {
-    axios.get('http://127.0.0.1:7777/api/news').then(res => {
+    axios.get('http://127.0.0.1:7777/api/news?size=1000').then(res => {
       commit(SET_NEWS_LIST, res.data)
     }).catch(err => {
       console.log(err)
