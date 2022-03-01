@@ -11,20 +11,20 @@
             </v-toolbar>
           </v-card>
           <v-card-text>
-            <v-text-field label="id" v-model="id" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="reg_date" v-model="reg_date" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="category" v-model="category" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="thumbnail" v-model="thumbnail" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="summary" v-model="summary" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="title_thumbnail" v-model="title_thumbnail" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="title_name" v-model="title_name" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="reporter" v-model="reporter" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="newspaper" v-model="newspaper" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="open_yn" v-model="open_yn" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="view_count" v-model="view_count" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="link" v-model="link" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="id" v-model="news.id" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="reg_date" v-model="news.reg_date" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="category" v-model="news.category" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="thumbnail" v-model="news.thumbnail" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="summary" v-model="news.summary" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="title_thumbnail" v-model="news.title_thumbnail" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="title_name" v-model="news.title_name" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="reporter" v-model="news.reporter" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="newspaper" v-model="news.newspaper" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="open_yn" v-model="news.open_yn" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="view_count" v-model="news.view_count" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="link" v-model="news.link" type="text" :disabled="isDisabled"></v-text-field>
 
-            <v-textarea height="450px" v-model="title_contents" label="title_contents" type="text" :rows="16" :disabled="isDisabled" aria-multiline="true"></v-textarea>
+            <v-textarea height="450px" v-model="news.title_contents" label="title_contents" type="text" :rows="16" :disabled="isDisabled" aria-multiline="true"></v-textarea>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -48,19 +48,21 @@ export default {
   data: function () {
     return {
       isDisabled: true,
-      reg_date: '',
-      category: '',
-      thumbnail: '',
-      summary: '',
-      title_thumbnail: '',
-      title_name: '',
-      title_contents: '',
-      reporter: '',
-      newspaper: '',
-      open_yn: '',
-      view_count: '',
-      link: '',
-      news: {}
+      news: {
+        id: '',
+        reg_date: '',
+        category: '',
+        thumbnail: '',
+        summary: '',
+        title_thumbnail: '',
+        title_name: '',
+        title_contents: '',
+        reporter: '',
+        newspaper: '',
+        open_yn: '',
+        view_count: '',
+        link: ''
+      }
     }
   },
   props: {
@@ -108,18 +110,18 @@ export default {
     modifyBoard: function () {
       if (this.isValidateBoardInfo) {
         const data = {
-          id: this.id,
-          category: this.category,
-          thumbnail: this.thumbnail,
-          summary: this.summary,
-          title_thumbnail: this.title_thumbnail,
-          title_name: this.title_name,
-          title_contents: this.title_contents,
-          reporter: this.reporter,
-          newspaper: this.newspaper,
-          open_yn: this.open_yn,
-          view_count: this.view_count,
-          link: this.link
+          id: this.news.id,
+          category: this.news.category,
+          thumbnail: this.news.thumbnail,
+          summary: this.news.summary,
+          title_thumbnail: this.news.title_thumbnail,
+          title_name: this.news.title_name,
+          title_contents: this.news.title_contents,
+          reporter: this.news.reporter,
+          newspaper: this.news.newspaper,
+          open_yn: this.news.open_yn,
+          view_count: this.news.view_count,
+          link: this.news.link
         }
         axios.put(`http://localhost:7777/api/news/${this.id}`, data).then(res => {
           if (res.status === 200 && res.data.msg === 'OK') {
@@ -151,7 +153,8 @@ export default {
   },
   mounted () {
     this.getNewsAction(this.id)
-    this.initValue(this.$store.state.news)
+    // this.initValue(this.$store.state.news)
+    this.news = this.$store.state.news
   },
   updated () {
     if (this.title === '' && this.contents === '') {
