@@ -6,25 +6,25 @@
           <v-card>
             <v-toolbar dark flat height="35px">
               <v-spacer />
-                <v-toolbar-title>B o a r d</v-toolbar-title>
+                <v-toolbar-title>DAUM NEWS</v-toolbar-title>
               <v-spacer />
             </v-toolbar>
           </v-card>
           <v-card-text>
             <v-text-field label="id" v-model="id" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="reg_date" v-model="$store.state.news.reg_date" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="category" v-model="$store.state.news.category" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="thumbnail" v-model="$store.state.news.thumbnail" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="summary" v-model="$store.state.news.summary" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="title_thumbnail" v-model="$store.state.news.title_thumbnail" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="title_name" v-model="$store.state.news.title_name" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="reporter" v-model="$store.state.news.reporter" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="newspaper" v-model="$store.state.news.newspaper" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="open_yn" v-model="$store.state.news.open_yn" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="view_count" v-model="$store.state.news.view_count" type="text" :disabled="isDisabled"></v-text-field>
-            <v-text-field label="link" v-model="$store.state.news.link" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="reg_date" v-model="reg_date" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="category" v-model="category" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="thumbnail" v-model="thumbnail" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="summary" v-model="summary" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="title_thumbnail" v-model="title_thumbnail" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="title_name" v-model="title_name" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="reporter" v-model="reporter" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="newspaper" v-model="newspaper" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="open_yn" v-model="open_yn" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="view_count" v-model="view_count" type="text" :disabled="isDisabled"></v-text-field>
+            <v-text-field label="link" v-model="link" type="text" :disabled="isDisabled"></v-text-field>
 
-            <v-textarea height="450px" v-model="$store.state.news.title_contents" label="title_contents" type="text" :rows="16" :disabled="isDisabled" aria-multiline="true"></v-textarea>
+            <v-textarea height="450px" v-model="title_contents" label="title_contents" type="text" :rows="16" :disabled="isDisabled" aria-multiline="true"></v-textarea>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -81,6 +81,20 @@ export default {
     ...mapActions([
       'getNewsAction'
     ]),
+    initValue: function (data1) {
+      this.reg_date = data1.reg_date
+      this.category = data1.category
+      this.thumbnail = data1.thumbnail
+      this.summary = data1.summary
+      this.title_thumbnail = data1.title_thumbnail
+      this.title_name = data1.title_name
+      this.title_contents = data1.title_contents
+      this.reporter = data1.reporter
+      this.newspaper = data1.newspaper
+      this.open_yn = data1.open_yn
+      this.view_count = data1.view_count
+      this.link = data1.link
+    },
     setModify: function () {
       this.isDisabled = !this.isDisabled
     },
@@ -137,6 +151,7 @@ export default {
   },
   mounted () {
     this.getNewsAction(this.id)
+    this.initValue(this.$store.state.news)
   },
   updated () {
     if (this.title === '' && this.contents === '') {

@@ -6,7 +6,7 @@
           <v-card>
            <v-card-title>
                 <v-spacer/>
-                B o a r d
+                DAUM NEWS
                 <v-spacer/>
                 <v-text-field v-model="search" append-icon="mdi-magnify" label="Title Search" single-line hide-details />
            </v-card-title>

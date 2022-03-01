@@ -6,13 +6,25 @@
           <v-card>
             <v-toolbar dark flat height="35px">
               <v-spacer />
-                <v-toolbar-title>B o a r d</v-toolbar-title>
+                <v-toolbar-title>DAUM NEWS</v-toolbar-title>
               <v-spacer />
             </v-toolbar>
           </v-card>
           <v-card-text>
-            <v-text-field label="title" v-model="board.title" :rules="titleRule" type="text"></v-text-field>
-            <v-textarea height="450px" v-model="board.contents" label="contents" :rules="contentsRule" type="text" :rows="16"></v-textarea>
+            <v-text-field label="id" v-model="board.id" type="text"></v-text-field>
+            <v-text-field label="reg_date" v-model="board.reg_date" type="text"></v-text-field>
+            <v-text-field label="category" v-model="board.category" type="text"></v-text-field>
+            <v-text-field label="thumbnail" v-model="board.thumbnail" type="text"></v-text-field>
+            <v-text-field label="summary" v-model="board.summary" type="text"></v-text-field>
+            <v-text-field label="title_thumbnail" v-model="board.title_thumbnail" type="text"></v-text-field>
+            <v-text-field label="title_name" v-model="board.title_name" type="text"></v-text-field>
+            <v-text-field label="reporter" v-model="board.reporter" type="text"></v-text-field>
+            <v-text-field label="newspaper" v-model="board.newspaper" type="text"></v-text-field>
+            <v-text-field label="open_yn" v-model="board.open_yn" type="text"></v-text-field>
+            <v-text-field label="view_count" v-model="board.view_count" type="text"></v-text-field>
+            <v-text-field label="link" v-model="board.link" type="text"></v-text-field>
+
+            <v-textarea height="450px" v-model="board.title_contents" label="title_contents" type="text" :rows="16" aria-multiline="true"></v-textarea>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -35,21 +47,30 @@ export default {
   data: function () {
     return {
       board: {
-        title: '',
-        contents: ''
+        id: '',
+        reg_date: '',
+        category: '',
+        thumbnail: '',
+        summary: '',
+        title_thumbnail: '',
+        title_name: '',
+        title_contents: '',
+        reporter: '',
+        newspaper: '',
+        open_yn: '',
+        view_count: '',
+        link: ''
       }
     }
   },
   computed: {
     ...mapState([
-      'titleRule',
-      'contentsRule'
     ]),
     ...mapGetters([
       'getLoginInfo'
     ]),
     isValidateBoardInfo: function () {
-      return this.board && this.board.title.trim() !== '' && this.board.contents.trim() !== ''
+      return this.board && this.board.id.trim() !== ''
     }
   },
   methods: {
@@ -58,21 +79,31 @@ export default {
         // console.log('title : ' + this.board.title)
         // console.log('contents : ' + this.board.contents)
 
-        var info = this.getLoginInfo
+        //        var info = this.getLoginInfo
 
-        const { title, contents, writer } = {
-          title: this.board.title,
-          contents: this.board.contents,
-          writer: info.nickName
+        const data = {
+          id: this.board.id,
+          reg_date: new Date(),
+          category: this.board.category,
+          thumbnail: this.board.thumbnail,
+          summary: this.board.summary,
+          title_thumbnail: this.board.title_thumbnail,
+          title_name: this.board.title_name,
+          title_contents: this.board.title_contents,
+          reporter: this.board.reporter,
+          newspaper: this.board.newspaper,
+          open_yn: this.board.open_yn,
+          view_count: this.board.view_count,
+          link: this.board.link
         }
 
-        axios.post('http://localhost:7777/board', { title, contents, writer }).then(res => {
-          if (res.status === 200 && res.data === 'Success') {
+        axios.post('http://localhost:7777/api/news', data).then(res => {
+          if (res.status === 200 && res.data.msg === 'OK') {
             alert('등록 성공')
           } else {
             alert('등록 실패')
           }
-          router.push({ name: 'BoardMain' })
+          router.push({ name: 'NewsList' })
         }).catch(err => {
           console.log(err)
         })
