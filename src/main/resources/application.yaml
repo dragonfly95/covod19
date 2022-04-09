@@ -16,8 +16,15 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     generate-ddl: true
     show-sql: true
+    properties:
+      jdbc:
+        batch_versioned_data: true
+        batch_size: 100
+      order_inserts: true
+      order_updates: true
+
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
   jackson:
     serialization:

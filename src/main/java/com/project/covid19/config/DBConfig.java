@@ -13,10 +13,10 @@ public class DBConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(
-                "jdbc:mysql://localhost:3307/covid19?serverTimezone=Asia/Seoul&useSSL=false"
+                "jdbc:mysql://localhost:3306/covid19?serverTimezone=Asia/Seoul&useSSL=false"
         );
         dataSource.setUsername("root");
-        dataSource.setPassword("1q2w3e4r5t");
+        dataSource.setPassword("123456");
         return dataSource;
     }
 }

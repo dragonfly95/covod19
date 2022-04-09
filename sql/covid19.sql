@@ -21,6 +21,23 @@ SET time_zone = "+00:00";
 -- 데이터베이스: `covid19`
 --
 
+CREATE TABLE `daum_news` (
+  `id` varchar(50) NOT NULL COMMENT '글번호',
+  `reg_date` datetime NOT NULL,
+  `category` varchar(50) default NULL,
+  `thumbnail` varchar(250) DEFAULT NULL,
+  `title_thumbnail` varchar(250) default null,
+  `summary` varchar(500) NOT NULL,
+  `title_name` varchar(200) NOT NULL,
+  `title_contents` text NOT NULL,
+  `reporter` varchar(100) NOT NULL COMMENT '기자',
+  `newspaper` varchar(100) NOT NULL,
+  `open_yn` char(1) NOT NULL DEFAULT 'Y',
+  `view_count` int(11) NOT NULL,
+  `link` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='daum.news';
+
+
 -- --------------------------------------------------------
 
 --
@@ -70,13 +87,6 @@ CREATE TABLE `member` (
   `position_y` varchar(20) DEFAULT NULL,
   `refresh_token` varchar(4096) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 테이블의 덤프 데이터 `member`
--- dragonfly95 / 1234
-
-INSERT INTO `member` (`user_no`, `email`, `id`, `nick_name`, `password`, `phone`, `position_x`, `position_y`, `refresh_token`) VALUES
-(1, 'dbdyd@nuonchic.com', 'dragonfly95', '나그네33+', '$2a$10$FhiuXB8FQuftta/OUj7C7uOK8SKYOdjKcYWZY/P4fDG7wS4H7PjZu', '010-2214-1797', '', '', 'eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6IjEiLCJleHAiOjE2NDcxNjUxMzl9.kFxLRCU599ELag_p8rp7HRFe47AYpYxi5y2QII9AT207GksgUKdpb0P2gPmkfiT7FdWn2uKZixkbVLaUguOvIg');
 
 --
 -- 덤프된 테이블의 인덱스

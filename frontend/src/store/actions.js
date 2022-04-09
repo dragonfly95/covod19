@@ -5,7 +5,9 @@ import {
   SET_LOGIN_INFO,
   DESTROY_LOGIN_INFO,
   SET_BOARD_LIST,
-  SET_BOARD
+  SET_BOARD,
+  SET_NEWS_LIST,
+  SET_NEWS
 } from '@/store/mutation-types.js'
 
 import router from '@/router'
@@ -60,6 +62,22 @@ export default {
       } else {
         console.log('status : ' + res.status + ', data : ' + res.data)
       }
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
+  getNewsListAction: function ({ commit }) {
+    axios.get('http://127.0.0.1:7777/api/news?size=1000').then(res => {
+      commit(SET_NEWS_LIST, res.data)
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+
+  getNewsAction: function ({ commit }, id) {
+    axios.get(`http://127.0.0.1:7777/api/news/${id}`).then(res => {
+      commit(SET_NEWS, res.data)
     }).catch(err => {
       console.log(err)
     })

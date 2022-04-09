@@ -17,7 +17,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @DynamicInsert
 @DynamicUpdate
-@Table(name = "board")
+@Table(name = "tbl_board")
 public class Board {
 
     @Id
