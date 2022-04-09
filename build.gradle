@@ -22,6 +22,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
+	implementation group: 'org.simpleflatmapper', name: 'sfm-jdbc', version: '8.2.3'
+
+	implementation 'javax.servlet:jstl'
+	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+
 	compile 'org.springframework.boot:spring-boot-starter-jdbc'
 	compile 'org.springframework.boot:spring-boot-starter-security'
 	compile 'org.springframework.boot:spring-boot-starter-aop'

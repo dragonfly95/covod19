@@ -47,6 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/board").permitAll()
                 .antMatchers(HttpMethod.GET, "/board/{boardNo}").permitAll()
+                .antMatchers("/test/**").permitAll()
+                .antMatchers("/static/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/member/register").permitAll()
                 .antMatchers(HttpMethod.GET, "/member/checkid/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/member/checknick/{nickName}").permitAll()
