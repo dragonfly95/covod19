@@ -26,8 +26,8 @@ dependencies {
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
 	implementation group: 'org.simpleflatmapper', name: 'sfm-jdbc', version: '8.2.3'
 
-	implementation 'javax.servlet:jstl'
-	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+	compile 'org.springframework.boot:spring-boot-devtools'
+
 
 	compile 'org.springframework.boot:spring-boot-starter-jdbc'
 	compile 'org.springframework.boot:spring-boot-starter-security'

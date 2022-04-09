@@ -28,7 +28,8 @@ public class Board {
     @Column(length = 200, nullable = false)
     private String title;
 
-    @Column(length = 2000, nullable = false)
+    @Lob
+//    @Column(columnDefinition = "TEXT", nullable = false)
     private String contents;
 
     @Column(length = 200, nullable = false)

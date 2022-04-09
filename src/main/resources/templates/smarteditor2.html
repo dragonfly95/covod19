@@ -1,15 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hello world</title>
+    <title>hello world </title>
 </head>
 <body>
-    
-    <h1>hello world</h1>
 
-    
+    <form name="form1" action="/test/posting" method="post">
+    <h1>
+        hello world ^^
+        <input type="button" name="" value="저장" onclick="submitContents(this)"/>
+    </h1>
+
+
+
+        <table width="95%">
+            <colgroup>
+                <cols width="10%"/>
+                <cols width="90%"/>
+            </colgroup>
+            <tr>
+                <td>내용</td>
+                <td>
+                    <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+
+                </td>
+            </tr>
+        </table>
+        </form>
+
+    <div th:utext="${data.contents}"></div>
+
+<script type="text/javascript" src="/static/smarteditor2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="/static/main.js"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@ spring:
 #    password: 123456
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 
+  devtools.livereload.enabled: true
+
   jpa:
     open-in-view: false
     database: mysql
@@ -27,6 +29,12 @@ spring:
     static-locations: classpath:/static/
     add-mappings: true
 
+  cache:
+    type: "none"
+
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
 logging:
   level:
     org:
