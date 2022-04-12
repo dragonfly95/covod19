@@ -1,15 +1,19 @@
 package com.project.covid19.controller;
 
+import com.project.covid19.entity.Paddress;
 import com.project.covid19.util.ValidatedUtil;
 import com.project.covid19.entity.Board;
 import com.project.covid19.service.BoardService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @Log
@@ -22,11 +26,11 @@ public class BoardController {
     BoardService service;
 
     @GetMapping("")
-    public ResponseEntity<List<Board>> getBoardList(){
+    public ResponseEntity<List<Board>> getBoardList(Pageable pageable){
 
         log.info("getBoardList()");
 
-        List<Board> list = service.getBoardList();
+        List<Board> list = service.getBoardList(pageable);
         int size = list.size();
 
         return new ResponseEntity<List<Board>>(list, HttpStatus.OK);
