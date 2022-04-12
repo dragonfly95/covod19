@@ -27,6 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         log.info("configure");
+
+        http.headers().frameOptions().sameOrigin();
+        
         http.cors()
                 .and()
                 // csrf 요청 비활성화 및 exception 발생시 발생한 exception을 처리할 default Exception Handler 등록
@@ -49,6 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/news/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/board").permitAll()
                 .antMatchers(HttpMethod.GET, "/board/{boardNo}").permitAll()
+                .antMatchers("/test/**").permitAll()
+                .antMatchers("/static/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/member/register").permitAll()
                 .antMatchers(HttpMethod.GET, "/member/checkid/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/member/checknick/{nickName}").permitAll()
